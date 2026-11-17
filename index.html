@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Droguería Meta · Catálogo de productos</title>
+<meta name="description" content="Catálogo de productos de Droguería Meta. Buscá por marca, droga o laboratorio y armá tu pedido por WhatsApp.">
+<meta name="theme-color" content="#0b2a66">
+<meta property="og:title" content="Droguería Meta · Catálogo de productos">
+<meta property="og:description" content="Buscá por marca, droga o laboratorio y armá tu pedido por WhatsApp.">
+<meta property="og:image" content="img/logo-meta.png">
+<link rel="icon" href="img/logo-meta.png">
+<style>
+:root{--navy:#0b2a66;--navy2:#123a86;--green:#7ab51d;--green2:#5f9410;--sky:#e8f2fb;--ink:#14213d;--soft:#5b6b86;--line:#dbe4f0;--bg:#f5f8fc;--card:#fff;--warn:#b26a00;--r:14px;color-scheme:light}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+a{color:inherit}button{font:inherit;cursor:pointer}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+header.top{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;gap:12px;height:62px}
+header.top img{height:38px;width:auto}
+header.top .sp{flex:1}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:10px 16px;font-weight:700;text-decoration:none;white-space:nowrap}
+.btn-wa{background:#25d366;color:#fff}.btn-wa:hover{background:#1ebe5b}
+.btn-navy{background:var(--navy);color:#fff}.btn-ghost{background:var(--sky);color:var(--navy)}
+.ico{width:18px;height:18px;flex:none}
+.hero{background:var(--navy);color:#fff;padding:28px 0 26px}
+.hero h1{margin:0 0 6px;font-size:clamp(26px,6vw,40px);line-height:1.1;letter-spacing:-.5px}
+.hero p{margin:0;color:#cfe0ff;max-width:640px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;padding-bottom:10px}.chips span{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:5px 11px;font-size:13.5px;color:#fff}
+.hero .bar{display:inline-block;width:64px;height:4px;background:var(--green);border-radius:2px;margin:10px 0 12px}
+.buscar{margin-top:-20px;position:relative;z-index:5}
+.sbox{background:#fff;border-radius:var(--r);box-shadow:0 8px 28px rgba(11,42,102,.14);padding:14px}
+.sbox .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.q{flex:1 1 280px;display:flex;align-items:center;gap:10px;border:2px solid var(--line);border-radius:12px;padding:0 12px;background:#fff}
+.q:focus-within{border-color:var(--navy2)}
+.q input{flex:1;border:0;outline:0;font-size:17px;padding:12px 0;min-width:0;background:transparent;color:var(--ink)}
+.sel{border:2px solid var(--line);border-radius:12px;padding:11px 12px;background:#fff;color:var(--ink);max-width:100%;flex:1 1 200px}
+.chk{display:flex;align-items:center;gap:8px;color:var(--soft);font-size:15px;user-select:none}
+.chk input{width:18px;height:18px;accent-color:var(--green2)}
+.info{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;color:var(--soft);font-size:14px;margin:14px 2px 8px}
+.lista{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px}
+.prod{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 12px 12px 14px;display:flex;gap:10px;align-items:flex-start}
+.prod .tx{flex:1;min-width:0}
+.prod b{display:block;font-size:15px;line-height:1.3;word-break:break-word}
+.prod .m{color:var(--navy2);font-size:13px;font-weight:600;margin-top:3px}
+.prod .l{color:var(--soft);font-size:12.5px;margin-top:1px}
+.tag{display:inline-block;font-size:12px;font-weight:700;border-radius:999px;padding:2px 9px;margin-top:6px}
+.tag.ok{background:#eaf6da;color:var(--green2)}.tag.no{background:#fff3e0;color:var(--warn)}
+.add{flex:none;border:2px solid var(--navy);background:#fff;color:var(--navy);border-radius:10px;width:40px;height:40px;font-size:22px;line-height:1;font-weight:700}
+.add.on{background:var(--navy);color:#fff;font-size:15px;width:auto;padding:0 10px}
+.mas{display:block;margin:16px auto 0}
+.vacio{background:#fff;border:1px dashed var(--line);border-radius:12px;padding:22px;text-align:center;color:var(--soft)}
+section.blk{padding:34px 0}
+section.blk h2{margin:0 0 14px;font-size:24px;color:var(--navy)}
+.ben{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.ben div{background:var(--sky);border-radius:var(--r);padding:16px}
+.ben b{display:block;color:var(--navy);font-size:17px;margin-bottom:2px}.ben span{color:var(--soft);font-size:14.5px}
+.ent{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.ent div{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.ent small{display:block;color:var(--navy2);font-weight:800;letter-spacing:.4px}
+.ent strong{display:block;color:var(--green2);font-size:26px;line-height:1.2;margin:4px 0}
+.ent span{color:var(--soft);font-size:14.5px}
+.cta{background:var(--sky);border-radius:var(--r);padding:22px;display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.cta h3{margin:0;color:var(--navy);font-size:22px}.cta p{margin:2px 0 0;color:var(--soft)}
+footer{padding:22px 0 110px;color:var(--soft);font-size:13px;text-align:center}
+/* barra y panel del pedido */
+.pbar{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:var(--navy);color:#fff;display:none;box-shadow:0 -6px 20px rgba(0,0,0,.18)}
+.pbar.on{display:block}.pbar .wrap{display:flex;align-items:center;gap:12px;padding:0}
+.pbar .t{flex:1;font-weight:700}
+.panel{position:fixed;inset:0;z-index:40;background:rgba(11,20,40,.45);display:none}
+.panel.on{display:flex;justify-content:flex-end}
+.panel .bx{background:#fff;width:min(460px,100%);height:100%;display:flex;flex-direction:column}
+.panel .hd{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--line)}
+.panel .hd h3{margin:0;color:var(--navy)}
+.panel .x{border:0;background:var(--sky);border-radius:10px;width:38px;height:38px;font-size:20px;color:var(--navy)}
+.panel .it{flex:1;overflow:auto;padding:8px 16px}
+.pit{display:flex;gap:10px;align-items:center;border-bottom:1px solid var(--line);padding:10px 0}
+.pit .tx{flex:1;min-width:0}.pit b{display:block;font-size:14.5px}.pit span{color:var(--soft);font-size:12.5px}
+.qty{display:flex;align-items:center;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.qty button{border:0;background:var(--sky);color:var(--navy);width:34px;height:34px;font-size:18px;font-weight:700}
+.qty input{width:46px;border:0;text-align:center;font-size:15px;height:34px;color:var(--ink);background:#fff}
+.del{border:0;background:none;color:#b42318;font-size:18px;width:30px}
+.panel .ft{padding:14px 16px calc(14px + env(safe-area-inset-bottom));border-top:1px solid var(--line);display:grid;gap:10px}
+.panel .ft input,.panel .ft textarea{width:100%;border:2px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit;color:var(--ink)}
+.panel .ft textarea{min-height:58px;resize:vertical}
+.nota{color:var(--soft);font-size:12.5px;margin:0}
+@media (max-width:560px){header.top .wa-txt{display:none}.chips{gap:6px}.chips span{font-size:12.5px;padding:4px 9px}.hero p{font-size:15px}.lnk{padding:9px 12px;font-size:14px}.lista{grid-template-columns:1fr}.hero{padding:22px 0 26px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <img src="img/logo-meta.png" alt="Meta · Soluciones farmacéuticas">
+  <span class="sp"></span>
+  <a href="#drogueria" class="btn btn-ghost lnk">La droguería</a>
+  <a class="btn btn-wa" id="waTop" href="#" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .3-3.4-.7-2.9-1.2-4.7-4.1-4.8-4.3-.1-.2-1.2-1.6-1.2-3s.7-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.8 1.4 1.8 2.2 1.2 1.1 2.3 1.4 2.6 1.6.3.1.5.1.7-.1l1-1.2c.2-.3.5-.3.7-.2l2 1c.3.1.5.2.6.3.1.2.1.7-.1 1.3Z"/></svg><span class="wa-txt">11 2282 5340</span></a>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <h1>Catálogo de productos</h1>
+  <span class="bar"></span>
+  <p>Buscá por marca, droga o laboratorio, sumá lo que necesitás y mandanos el pedido por WhatsApp. Te respondemos con precio y condiciones.</p>
+  <div class="chips"><span>✓ Envío sin costo adicional</span><span>✓ AMBA en el día o en 24 h</span><span>✓ 23 provincias + CABA</span><span>✓ Descuentos para farmacias</span></div>
+</div></section>
+
+<main class="wrap">
+  <div class="buscar"><div class="sbox">
+    <div class="row">
+      <label class="q"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#5b6b86" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" type="search" placeholder="Ej.: enoxaparina, Klonal, omeprazol 20" autocomplete="off" enterkeyhint="search" aria-label="Buscar producto"></label>
+      <select id="lab" class="sel" aria-label="Laboratorio"><option value="">Todos los laboratorios</option></select>
+      <label class="chk"><input type="checkbox" id="disp"> Solo disponibles</label>
+    </div>
+  </div></div>
+  <div class="info"><span id="cuenta">Cargando catálogo…</span><span id="fecha"></span></div>
+  <div class="lista" id="lista"></div>
+  <button class="btn btn-ghost mas" id="mas" hidden>Ver más resultados</button>
+</main>
+
+<section class="blk" id="drogueria"><div class="wrap">
+  <h2>Por qué Meta</h2>
+  <div class="ben">
+    <div><b>Atención personalizada</b><span>Un equipo listo para asesorarte.</span></div>
+    <div><b>Respuesta ágil</b><span>Te acompañamos en todo el proceso.</span></div>
+    <div><b>Descuentos competitivos</b><span>Mejores condiciones para tu farmacia.</span></div>
+    <div><b>Envío sin costo adicional</b><span>Recibí tus productos sin costos extra.</span></div>
+  </div>
+</div></section>
+
+<section class="blk" style="padding-top:0"><div class="wrap">
+  <h2>Entregas en todo el país</h2>
+  <p style="margin:-6px 0 14px;color:var(--soft)">23 provincias + CABA</p>
+  <div class="ent">
+    <div><small>AMBA</small><strong>En el día o en 24 h</strong><span>Realizamos entregas en el AMBA en 24 h o en el mismo día.</span></div>
+    <div><small>RESTO DEL PAÍS</small><strong>24 / 48 / 72 h</strong><span>Según destino y distancia de las cabeceras.</span></div>
+  </div>
+</div></section>
+
+<section class="blk" style="padding-top:0"><div class="wrap">
+  <div class="cta"><div><h3>Cotizá por WhatsApp</h3><p>Escribinos y conocé nuestras condiciones comerciales.</p></div>
+    <a class="btn btn-wa" id="waCta" href="#" target="_blank" rel="noopener">Escribir al 11 2282 5340</a></div>
+</div></section>
+
+<footer><div class="wrap">Droguería Meta S.A. · Soluciones farmacéuticas<br><span id="pie"></span></div></footer>
+
+<div class="pbar" id="pbar"><div class="wrap"><span class="t" id="ptxt">Tu pedido</span><button class="btn btn-ghost" id="pver">Ver pedido</button></div></div>
+<div class="panel" id="panel" role="dialog" aria-modal="true" aria-label="Tu pedido"><div class="bx">
+  <div class="hd"><h3>Tu pedido</h3><button class="x" id="pcer" aria-label="Cerrar">✕</button></div>
+  <div class="it" id="pitems"></div>
+  <div class="ft">
+    <input id="pnom" placeholder="Tu farmacia o nombre (opcional)" autocomplete="organization">
+    <textarea id="pobs" placeholder="Comentarios (opcional)"></textarea>
+    <a class="btn btn-wa" id="penv" href="#" target="_blank" rel="noopener">Enviar pedido por WhatsApp</a>
+    <p class="nota">Se abre WhatsApp con el pedido escrito; lo revisás y lo enviás. Te respondemos con precio, disponibilidad y condiciones.</p>
+    <button class="btn btn-ghost" id="pvac">Vaciar pedido</button>
+  </div>
+</div></div>
+
+<script>
+(function(){
+  "use strict";
+  var WA="5491122825340", PASO=60;
+  var $=function(s){return document.querySelector(s)};
+  var norm=function(s){return String(s||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^a-z0-9+%./ ]+/g," ").replace(/\s+/g," ").trim()};
+  var esc=function(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})};
+  var waLink=function(t){return "https://wa.me/"+WA+(t?"?text="+encodeURIComponent(t):"")};
+  var P=[], R=[], vis=PASO;
+  // pedido guardado en el navegador del cliente
+  var ped={}; try{ped=JSON.parse(localStorage.getItem("meta-pedido")||"{}")||{}}catch(e){ped={}}
+  var guardar=function(){try{localStorage.setItem("meta-pedido",JSON.stringify(ped))}catch(e){}};
+  $("#waTop").href=waLink("Hola, quiero hacer una consulta."); $("#waCta").href=waLink("Hola, quiero conocer las condiciones comerciales.");
+
+  fetch("datos/catalogo.json",{cache:"no-cache"}).then(function(r){return r.json()}).then(function(d){
+    P=d.p.map(function(x,i){return {i:i,marca:x[0],mono:x[1],lab:x[2],d:!!x[3],k:norm(x[0]+" "+x[1]+" "+x[2])}});
+    var f=d.fecha?d.fecha.split("-").reverse().join("/"):"";
+    $("#fecha").textContent=f?"Actualizado al "+f:""; $("#pie").textContent=f?"Catálogo actualizado al "+f+".":"";
+    var labs={}; P.forEach(function(p){if(p.lab)labs[p.lab]=(labs[p.lab]||0)+1});
+    $("#lab").innerHTML='<option value="">Todos los laboratorios</option>'+Object.keys(labs).sort().map(function(l){return '<option>'+esc(l)+'</option>'}).join("");
+    // ?q=... para compartir una búsqueda
+    var u=new URLSearchParams(location.search); if(u.get("q"))$("#q").value=u.get("q"); if(u.get("lab"))$("#lab").value=u.get("lab"); if(u.get("disp")==="1")$("#disp").checked=true;
+    // el pedido guarda la marca: si un producto ya no está, se quita
+    Object.keys(ped).forEach(function(m){if(!P.some(function(p){return p.marca===m}))delete ped[m]}); guardar();
+    filtrar(); pintarBarra();
+  }).catch(function(){$("#cuenta").textContent="No se pudo cargar el catálogo. Probá de nuevo en un rato o escribinos por WhatsApp."});
+
+  function filtrar(){
+    var ws=norm($("#q").value).split(" ").filter(Boolean), lab=$("#lab").value, solo=$("#disp").checked;
+    R=P.filter(function(p){return (!lab||p.lab===lab)&&(!solo||p.d)&&ws.every(function(w){return p.k.indexOf(w)>=0})});
+    // con búsqueda: primero lo que empieza con lo buscado y lo disponible
+    if(ws.length){var w0=ws[0];R.sort(function(a,b){var sa=(norm(a.marca).indexOf(w0)===0||norm(a.mono).indexOf(w0)===0?0:1)+(a.d?0:.5),sb=(norm(b.marca).indexOf(w0)===0||norm(b.mono).indexOf(w0)===0?0:1)+(b.d?0:.5);return sa-sb||a.i-b.i})}
+    vis=PASO; pintar();
+  }
+  function pintar(){
+    var n=R.length;
+    $("#cuenta").textContent=n?(n===P.length?n+" productos":n+" resultado"+(n===1?"":"s")):"Sin resultados";
+    $("#lista").innerHTML=n?R.slice(0,vis).map(function(p){var q=ped[p.marca];
+      return '<div class="prod"><div class="tx"><b>'+esc(p.marca)+'</b>'+(p.mono?'<div class="m">'+esc(p.mono)+'</div>':"")+(p.lab?'<div class="l">'+esc(p.lab)+'</div>':"")+
+        '<span class="tag '+(p.d?'ok">Disponible':'no">Consultar')+'</span></div><button class="add'+(q?' on':'')+'" data-i="'+p.i+'" aria-label="Agregar al pedido">'+(q?'✓ '+q:'+')+'</button></div>'}).join("")
+      :'<div class="vacio">No encontramos ese producto en el catálogo.<br><a class="btn btn-wa" style="margin-top:12px" target="_blank" rel="noopener" href="'+waLink("Hola, ¿tienen "+$("#q").value.trim()+"?")+'">Consultanos por WhatsApp</a></div>';
+    $("#mas").hidden=vis>=n;
+  }
+  var t; $("#q").addEventListener("input",function(){clearTimeout(t);t=setTimeout(filtrar,150)});
+  $("#lab").addEventListener("change",filtrar); $("#disp").addEventListener("change",filtrar);
+  $("#mas").addEventListener("click",function(){vis+=PASO;pintar()});
+  $("#lista").addEventListener("click",function(e){var b=e.target.closest("[data-i]");if(!b)return;var p=P[+b.dataset.i];
+    if(ped[p.marca]){abrir();return} ped[p.marca]=1;guardar();pintar();pintarBarra()});
+
+  function cantPed(){return Object.keys(ped).length}
+  function pintarBarra(){var n=cantPed();$("#pbar").classList.toggle("on",n>0);$("#ptxt").textContent="Tu pedido · "+n+" producto"+(n===1?"":"s")}
+  function texto(){var L=Object.keys(ped).map(function(m){return "• "+ped[m]+" x "+m});var nom=$("#pnom").value.trim(),obs=$("#pobs").value.trim();
+    return "Hola, quiero cotizar este pedido"+(nom?" ("+nom+")":"")+":\n"+L.join("\n")+(obs?"\n\nComentarios: "+obs:"")}
+  function pintarPanel(){
+    var M=Object.keys(ped);
+    $("#pitems").innerHTML=M.length?M.map(function(m){var p=P.find(function(x){return x.marca===m})||{};
+      return '<div class="pit"><div class="tx"><b>'+esc(m)+'</b><span>'+esc([p.mono,p.lab].filter(Boolean).join(" · "))+'</span></div><div class="qty"><button data-m="-" data-k="'+esc(m)+'" aria-label="Menos">−</button><input inputmode="numeric" value="'+ped[m]+'" data-k="'+esc(m)+'" aria-label="Cantidad"><button data-m="+" data-k="'+esc(m)+'" aria-label="Más">+</button></div><button class="del" data-del="'+esc(m)+'" aria-label="Quitar">✕</button></div>'}).join("")
+      :'<p class="nota" style="padding:16px 0">Todavía no agregaste productos. Tocá “+” en los que necesites.</p>';
+    $("#penv").href=waLink(texto()); $("#penv").style.pointerEvents=M.length?"":"none"; $("#penv").style.opacity=M.length?"":".5";
+  }
+  function abrir(){pintarPanel();$("#panel").classList.add("on")}
+  function cerrar(){$("#panel").classList.remove("on");pintar();pintarBarra()}
+  $("#pver").addEventListener("click",abrir); $("#pcer").addEventListener("click",cerrar);
+  $("#panel").addEventListener("click",function(e){if(e.target.id==="panel")return cerrar();
+    var b=e.target.closest("[data-m]"),d=e.target.closest("[data-del]");
+    if(b){var k=b.dataset.k;ped[k]=Math.max(1,(+ped[k]||1)+(b.dataset.m==="+"?1:-1));guardar();pintarPanel()}
+    if(d){delete ped[d.dataset.del];guardar();pintarPanel();if(!cantPed())cerrar()}});
+  $("#pitems").addEventListener("change",function(e){var k=e.target.dataset.k;if(!k)return;ped[k]=Math.max(1,Math.round(+e.target.value)||1);guardar();pintarPanel()});
+  ["#pnom","#pobs"].forEach(function(s){$(s).addEventListener("input",function(){$("#penv").href=waLink(texto())})});
+  $("#pvac").addEventListener("click",function(){if(confirm("¿Vaciar el pedido?")){ped={};guardar();cerrar()}});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape"&&$("#panel").classList.contains("on"))cerrar()});
+})();
+</script>
+</body>
+</html>
